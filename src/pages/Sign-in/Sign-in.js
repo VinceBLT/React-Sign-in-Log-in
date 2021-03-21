@@ -3,6 +3,7 @@ import FormInput from "../../components/Form-input";
 import Button from "../../components/Button";
 import axios from "axios";
 import "./Sign-in.styles.scss";
+import "../../config/axios-conf";
 
 export class SignIn extends React.Component {
   constructor(props) {
@@ -18,7 +19,14 @@ export class SignIn extends React.Component {
     event.preventDefault();
 
     this.setState({ email: "", password: "" });
-    console.log(this.state);
+    axios
+      .post("users", this.state)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((response) => {
+        alert(response.response.data.detail);
+      });
   };
 
   handleChange = (event) => {
@@ -34,7 +42,7 @@ export class SignIn extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <FormInput
             name="email"
-            type="email"
+            //type="email"
             value={this.state.email}
             required
             handleChange={this.handleChange}
