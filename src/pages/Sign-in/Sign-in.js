@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FormInput from "../../components/Form-input";
 import Button from "../../components/Button";
+import axios from "axios";
 import "./Sign-in.styles.scss";
 
 export class SignIn extends React.Component {
@@ -17,6 +18,7 @@ export class SignIn extends React.Component {
     event.preventDefault();
 
     this.setState({ email: "", password: "" });
+    console.log(this.state);
   };
 
   handleChange = (event) => {
@@ -29,7 +31,6 @@ export class SignIn extends React.Component {
     return (
       <div className="sign-in">
         <h2>Sign In Form</h2>
-
         <form onSubmit={this.handleSubmit}>
           <FormInput
             name="email"
