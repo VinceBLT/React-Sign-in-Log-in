@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import FormInput from "../../components/Form-input";
 import Button from "../../components/Button";
 import axios from "axios";
-import "./Sign-in.styles.scss";
+import "./Log-in.styles.scss";
 import "../../config/axios-conf";
 
-export class SignIn extends React.Component {
+export class LogIn extends React.Component {
   constructor(props) {
     super(props);
 
@@ -39,7 +38,7 @@ export class SignIn extends React.Component {
   render() {
     return (
       <div className="sign-in">
-        <h2>Sign In Form</h2>
+        <h2>Log In Form</h2>
         <form onSubmit={this.handleSubmit}>
           <FormInput
             name="email"
@@ -59,12 +58,8 @@ export class SignIn extends React.Component {
             label="password"
           />
 
-          <Button type="submit">SIGN IN</Button>
+          <Button type="submit">LOG IN</Button>
         </form>
-        <h4>Already have an account ?</h4>
-        <Link to="/LogIn">
-            <Button>LOG IN</Button>
-        </Link>
       </div>
     );
   }
