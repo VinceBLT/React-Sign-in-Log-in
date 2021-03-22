@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import FormInput from "../../components/Form-input";
 import Button from "../../components/Button";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 import "./Log-in.styles.scss";
 import "../../config/axios-conf";
 
@@ -22,7 +23,9 @@ export class LogIn extends React.Component {
     axios
       .post("login", this.state)
       .then((response) => {
-        console.log(response.data.token);
+        let token = response.data.token;
+        let decoded = jwt_decode(token);
+        console.log(decoded);
       })
       .catch((err) => {
         alert(err.response.data.message);
