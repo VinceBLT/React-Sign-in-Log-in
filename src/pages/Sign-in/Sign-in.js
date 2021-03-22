@@ -43,7 +43,7 @@ export class SignIn extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <FormInput
             name="email"
-            //type="email"
+            type="email"
             value={this.state.email}
             required
             handleChange={this.handleChange}

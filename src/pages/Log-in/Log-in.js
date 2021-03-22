@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import FormInput from "../../components/Form-input";
 import Button from "../../components/Button";
 import axios from "axios";
@@ -17,15 +18,14 @@ export class LogIn extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     this.setState({ email: "", password: "" });
     axios
-      .post("users", this.state)
+      .post("login", this.state)
       .then((response) => {
-        console.log(response);
+        console.log(response.data.token);
       })
-      .catch((response) => {
-        alert(response.response.data.detail);
+      .catch((err) => {
+        alert(err.response.data.message);
       });
   };
 
@@ -42,7 +42,7 @@ export class LogIn extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <FormInput
             name="email"
-            //type="email"
+            type="email"
             value={this.state.email}
             required
             handleChange={this.handleChange}
@@ -57,7 +57,6 @@ export class LogIn extends React.Component {
             handleChange={this.handleChange}
             label="password"
           />
-
           <Button type="submit">LOG IN</Button>
         </form>
       </div>
